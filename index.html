@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no"/>
+    <!--<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no"/>-->
     <title>播放视频</title>
     <style>
         * {
@@ -11,25 +11,23 @@
         margin: 0;
         border: 1px solid black;
         }
-        html, body, #youkuplayer {
-        width: 100%;
-        height: 90%;
-        }
+
     </style>
 </head>
 
 <body>
 <div id="youkuplayer">
     <!-- "Video For Everybody" http://camendesign.com/code/video_for_everybody -->
-    <video controls="controls"
+    <video id="player_video"
+           controls="controls"
            poster="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg"
-           width="640" height="360">
+           width="320" height="180">
         <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4"/>
         <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm"/>
         <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg"/>
         <object type="application/x-shockwave-flash"
-                data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640"
-                height="360">
+                data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="320"
+                height="180">
             <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf"/>
             <param name="allowFullScreen" value="true"/>
             <param name="wmode" value="transparent"/>
@@ -67,9 +65,13 @@
     document.addEventListener("mozfullscreenchange", onFullscreenChange);
 
 
-document.getElementById("youkuplayer").addEventListener("click", function(){
+//document.getElementById("youkuplayer").addEventListener("click", function(){
+//    document.getElementById("youkuplayer").webkitRequestFullscreen();
+//});
+document.getElementById("outputBaijie").addEventListener("click", function(){
     document.getElementById("youkuplayer").webkitRequestFullscreen();
 });
+
 
 
 </script>
