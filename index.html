@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no"/>
+    <title>播放视频</title>
+    <style>
+        * {
+        padding: 0;
+        margin: 0;
+        border: 1px solid black;
+        }
+        html, body, #youkuplayer {
+        width: 100%;
+        height: 90%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="youkuplayer">Video</div>
+<div id="outputBaijie">Hi</div>
+
+<script type="text/javascript">
+
+    var output = document.getElementById("outputBaijie");
+    output.innerHTML = "Hello";
+
+
+    var button = document.getElementsByClassName("x-fullscreen");
+    output.innerHTML = new String( button.length)
+
+    var onFullscreenChange = function() {
+    output.innerHTML = "onFullscreenChange";
+    }
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+    document.addEventListener("mozfullscreenchange", onFullscreenChange);
+
+
+document.getElementById("youkuplayer").addEventListener("click", function(){
+    document.getElementById("youkuplayer").webkitRequestFullscreen();
+});
+
+
+</script>
+
+
+</body>
+
+</html>
