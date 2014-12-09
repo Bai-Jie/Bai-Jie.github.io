@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no"/>
+    <title>播放视频</title>
+    <style>
+        * {
+        padding: 0;
+        margin: 0;
+        }
+        html, body, #youkuplayer {
+        width: 100%;
+        height: 90%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="youkuplayer"></div>
+<div id="outputBaijie">Hi</div>
+
+<script type="text/javascript" src="http://player.youku.com/jsapi"></script>
+<script type="text/javascript">
+var onPlayStart = function() {
+    var output = document.getElementById("outputBaijie");
+    output.innerHTML += "Hello";
+
+
+    var button = document.getElementsByClassName("x-fullscreen");
+    output.innerHTML += new String(button.length);
+    output.innerHTML += document.fullscreenEnabled;
+    output.innerHTML += document.webkitFullscreenEnabled;
+
+    button[0].addEventListener("click", function(){
+        output.innerHTML += document.getElementById("youku-html5player-video");
+        output.innerHTML += document.getElementById("youku-html5player-video").webkitRequestFullscreen;
+        document.getElementById("youku-html5player-video").webkitRequestFullscreen();
+        //output.innerHTML += document.getElementById("x-player");
+        //document.getElementById("x-player").webkitRequestFullscreen();
+    });
+
+    var onFullscreenChange = function() {
+    output.innerHTML += "onFullscreenChange";
+    output.innerHTML += document.webkitFullscreenElement;
+    }
+    var onFullscreenError = function() {
+    output.innerHTML += "onFullscreenError";
+    //output.innerHTML += event;
+    }
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+    document.addEventListener("mozfullscreenchange", onFullscreenChange);
+    document.addEventListener("fullscreenerror", onFullscreenError);
+    document.addEventListener("webkitfullscreenerror", onFullscreenError);
+    document.addEventListener("mozfullscreenerror", onFullscreenError);
+};
+
+
+player = new YKU.Player('youkuplayer',{
+styleid: '0',
+client_id: 'd407654cbc2f4838',
+vid: 'XODMyNTQ5MTI0',
+autoplay: true,
+events:{
+//onPlayerReady: onPlayerReady,
+onPlayStart: onPlayStart
+}
+});
+
+
+
+
+</script>
+
+</body>
+
+</html>
